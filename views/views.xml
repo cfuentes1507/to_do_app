@@ -1,60 +1,45 @@
 <odoo>
   <data>
-    <!-- explicit list view definition -->
-<!--
-    <record model="ir.ui.view" id="to_do_app.list">
-      <field name="name">to_do_app list</field>
-      <field name="model">to_do_app.to_do_app</field>
+<!-- Vista tree -->
+    <record model="ir.ui.view" id="view_tree_todo">
+      <field name="name">to_do_app.view_tree_todo</field>
+      <field name="model">todo.app</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
+          <field name="name" string="Tarea"/>
+          <field name="description" string="Descripcion de Tarea"/>
+          <field name="status"/>
         </tree>
       </field>
     </record>
--->
-
-    <!-- actions opening views on models -->
-<!--
-    <record model="ir.actions.act_window" id="to_do_app.action_window">
-      <field name="name">to_do_app window</field>
-      <field name="res_model">to_do_app.to_do_app</field>
-      <field name="view_mode">tree,form</field>
-    </record>
--->
-
-    <!-- server action to the one above -->
-<!--
-    <record model="ir.actions.server" id="to_do_app.action_server">
-      <field name="name">to_do_app server</field>
-      <field name="model_id" ref="model_to_do_app_to_do_app"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": model._name,
-        }
+<!-- Vista form -->
+    <record model="ir.ui.view" id="view_form_todo">
+      <field name="name">to_do_app.view_form_todo</field>
+      <field name="model">todo.app</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group string="Datos de la tarea">
+              <group>
+                <field name="name" string="Tarea"/>
+                <field name="description" string="Descripcion de Tarea"/>
+              </group>
+              <group>
+                <field name="status"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
       </field>
     </record>
--->
 
-    <!-- Top menu item -->
-<!--
-    <menuitem name="to_do_app" id="to_do_app.menu_root"/>
--->
-    <!-- menu categories -->
-<!--
-    <menuitem name="Menu 1" id="to_do_app.menu_1" parent="to_do_app.menu_root"/>
-    <menuitem name="Menu 2" id="to_do_app.menu_2" parent="to_do_app.menu_root"/>
--->
-    <!-- actions -->
-<!--
-    <menuitem name="List" id="to_do_app.menu_1_list" parent="to_do_app.menu_1"
-              action="to_do_app.action_window"/>
-    <menuitem name="Server to list" id="to_do_app" parent="to_do_app.menu_2"
-              action="to_do_app.action_server"/>
--->
+<!-- Action -->
+    <record model="ir.actions.act_window" id="to_do_app.action_view_todo">
+      <field name="name">Lista de Tareas</field>
+      <field name="res_model">todo.app</field>
+    </record>
+<!-- Menu -->
+    <menuitem name="Lista de Tareas" parent="" id="to_do_app.menu" action="to_do_app.action_view_todo"/>
+
   </data>
 </odoo>
